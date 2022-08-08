@@ -63,6 +63,22 @@ RSpec.describe Market do
       expect(@market.vendor_names.count).to eq(3)
     end
 
-    it ''
+    it 'can list vendors that sell a specific item' do 
+      @vendor1.stock(@item1, 35)
+      @vendor1.stock(@item2, 7)
+      @vendor2.stock(@item4, 50)
+      @vendor2.stock(@item3, 25)
+      @vendor3.stock(@item1, 65)
+      @market.add_vendor(@vendor1)  
+      @market.add_vendor(@vendor2)
+      @market.add_vendor(@vendor3)
+
+      expect(@market.vendors_that_sell(@item1)).to eq([@vendor1, @vendor3])
+      expect(@market.vendors_that_sell(@item1).count).to eq(2)
+      expect(@market.vendors_that_sell(@item4)).to eq([@vendor2])
+      expect(@market.vendors_that_sell(@item4).count).to eq(1)
+    end
+
+
   end
 end
