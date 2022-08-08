@@ -10,6 +10,8 @@ RSpec.describe Market do
     @item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
     @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
     @vendor1 = Vendor.new("Rocky Mountain Fresh")
+    @vendor2 = Vendor.new("Ba-Nom-a-Nom")
+    @vendor3 = Vendor.new("Palisade Peach Shack")
   end
 
   describe 'iteration 2' do 
@@ -24,6 +26,32 @@ RSpec.describe Market do
 
     it 'has vendors list set to an empty array' do 
       expect(@market.vendors).to eq([])
+    end
+
+    it 'can stock vendors with items and add vendors to event vendors list array' do 
+      @vendor1.stock(@item1, 35)
+      @vendor1.stock(@item2, 7)
+
+      #stock items, then check inventory to make sure they are there, check item type count.
+      expect(@vendor1.inventory).to eq({@item1 => 35, @item2 => 7})
+      expect(@vendor1.inventory.size).to eq(2)
+
+      @vendor2.stock(@item4, 50)
+      @vendor2.stock(@item3, 25)
+
+      expect(@vendor2.inventory).to eq({@item4 => 50}, @item3 => 25))
+      expect(@vendor2.inventory.size).to eq(2)
+
+      @vendor3.stock(@item1, 65)
+      expect(@vendor3.inventory).to eq({@item1 => 65})
+      expect(@vendor3.inventory.size).to eq(1)
+
+      @market.add_vendor(@vendor1)  #action to add vendor to array
+      @market.add_vendor(@vendor2)
+      @market.add_vendor(@vendor3)
+
+      expect(@market.vendors).to eq([@vendor1, @vendor2, @vendor3])
+      expect(@market.vendors.count).to eq(3)
     end
 
   end
