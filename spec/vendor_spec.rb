@@ -20,6 +20,7 @@ RSpec.describe Vendor do
 
     it 'has an inventory set intially to an empty hash' do 
       expect(@vendor.inventory).to eq({})
+      expect(@vendor.inventory.size).to eq(0)
     end
 
     it 'can check inventory stock as well as stock an item and amount' do 
@@ -29,12 +30,14 @@ RSpec.describe Vendor do
 
       expect(@vendor.inventory).to eq({@item1 => 30})
       expect(@vendor.check_stock(@item1)).to eq(30)
+      expect(@vendor.inventory.size).to eq(1)
 
       @vendor.stock(@item1, 25)
       expect(@vendor.check_stock(@item1)).to eq(55)
 
       @vendor.stock(@item2, 12)
-      expect(@food_truck.inventory).to eq({@item => 55, @item2 => 12})
+      expect(@vendor.inventory).to eq({@item1 => 55, @item2 => 12})
+      expect(@vendor.inventory.size).to eq(2)
     end
 
   end
