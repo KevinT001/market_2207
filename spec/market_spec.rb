@@ -19,16 +19,16 @@ RSpec.describe Market do
       expect(@market).to be_a(Market)
     end
 
-    it 'has attributes' do 
+    it 'attributes' do 
 
       expect(@market.name).to eq("South Pearl Street Farmers Market")
     end
 
-    it 'has vendors list set to an empty array' do 
+    it 'has vendors set to an empty array, if no vendors are added' do 
       expect(@market.vendors).to eq([])
     end
 
-    it 'can stock vendors with items and add vendors to event vendors list array' do 
+    it 'can stock vendors with items and add vendors to event vendors array' do 
       @vendor1.stock(@item1, 35)
       @vendor1.stock(@item2, 7)
 
@@ -54,7 +54,7 @@ RSpec.describe Market do
       expect(@market.vendors.count).to eq(3)
     end
 
-    it 'can list vendor names in array' do 
+    it 'can return vendor names in array' do 
       @market.add_vendor(@vendor1)  
       @market.add_vendor(@vendor2)
       @market.add_vendor(@vendor3)
@@ -101,6 +101,6 @@ RSpec.describe Market do
       expect(@market.total_inventory).to eq(expected)
     end
 
-    
+
   end
 end

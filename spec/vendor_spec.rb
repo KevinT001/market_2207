@@ -18,16 +18,16 @@ RSpec.describe Vendor do
       expect(@vendor).to be_a(Vendor)
     end
 
-    it 'has attributes' do 
+    it 'attributes' do 
       expect(@vendor.name).to eq("Rocky Mountain Fresh")
     end
 
-    it 'has an inventory set intially to an empty hash' do 
+    it 'empty hash if no items in inventory' do 
       expect(@vendor.inventory).to eq({})
       expect(@vendor.inventory.size).to eq(0)
     end
 
-    it 'can check inventory stock as well as stock an item and amount' do 
+    it 'can check inventory, stock an item and amount' do 
 
       expect(@vendor.check_stock(@item1)).to eq(0)
       @vendor.stock(@item1, 30)
@@ -46,7 +46,7 @@ RSpec.describe Vendor do
   end
 
   describe 'iteration 2' do 
-    it 'can show potential revenue for vendors with current stock' do 
+    it 'can calculate potential revenue for vendors with current stock' do 
 
       @vendor.stock(@item1, 35) #iteraction pattern says @vendor1 but for testing sake
       @vendor.stock(@item2, 7)  #I made it just @vendor so i don't have to change everything

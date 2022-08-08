@@ -18,4 +18,14 @@ class Market
   def vendors_that_sell(item)
     @vendors.find_all {|vendor| vendor.inventory.include?(item)}
   end
+
+  def total_inventory
+    inventory_total = {}
+    @vendors.find_all {|vendor| 
+    vendor.inventory.each do |product, quantity| inventory_total[product]= quantity.sum.uniq
+    } 
+    inventory_total
+    
+  end
+
 end
