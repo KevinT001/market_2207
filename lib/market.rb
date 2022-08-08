@@ -25,6 +25,9 @@ class Market
     vendor.inventory.each do |product, quantity| inventory_total[product]= quantity.sum.uniq
     } 
     inventory_total
+  end
+
+  def overstocked_items
     
   end
 

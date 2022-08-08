@@ -81,7 +81,7 @@ RSpec.describe Market do
   end
 
   describe 'iteration 3' do 
-    it 'can show total inventory of all items sold at the market' do 
+    xit 'can show total inventory of all items sold at the market' do 
       @vendor1.stock(@item1, 35)
       @vendor1.stock(@item2, 7)
       @vendor2.stock(@item4, 50)
@@ -101,7 +101,7 @@ RSpec.describe Market do
       expect(@market.total_inventory).to eq(expected)
     end
 
-    xit 'shows items sold by multiple vendors and quantity over 50' do 
+    it 'shows items sold by multiple vendors and quantity over 50' do 
       @vendor1.stock(@item1, 35)
       @vendor1.stock(@item2, 7)
       @vendor2.stock(@item4, 50)
@@ -127,8 +127,5 @@ RSpec.describe Market do
 
       expect(@market.sorted_item_list).to eq(["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"])
     end
-
-
-
   end
 end
