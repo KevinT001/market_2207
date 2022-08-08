@@ -39,7 +39,7 @@ RSpec.describe Market do
       @vendor2.stock(@item4, 50)
       @vendor2.stock(@item3, 25)
 
-      expect(@vendor2.inventory).to eq({@item4 => 50}, @item3 => 25))
+      expect(@vendor2.inventory).to eq({@item4 => 50, @item3 => 25})
       expect(@vendor2.inventory.size).to eq(2)
 
       @vendor3.stock(@item1, 65)
